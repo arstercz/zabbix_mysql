@@ -17,15 +17,19 @@
 ## Test
 
 \# perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items hv
+
 hv:36968
 
 \# perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items kx
+
 kx:1070879944
 
 xxxxxxxxxxxxxxxx
 
 \# php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items hv
+
 hv:36968
 
 \# php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items kx
+
 kx:1070911408
