@@ -99,7 +99,7 @@ unless ( @items > 0 ) {
             push @output, $item;
         }
     }
-    print "Final result " . join(" ", @output) . "\n" if $debug;
+    debug(@output);
     print join(" ", @output);
 }
 
@@ -113,6 +113,7 @@ sub read_cnf {
    my $cnf = shift;
    my @userinfo;
    open my $cf, '<', $cnf or warn "open file $cnf error: $!";
+   debug("read cnf $cnf.");
    while(<$cf>) {
       next if not /^\s*(?:\[client\]|user|password)\s*/;
       push @userinfo, $1 if /\s*(?:user|password)\s*=(\S+)\s*/;
@@ -121,18 +122,38 @@ sub read_cnf {
 }
 
 sub time_zone {
-   my $tz = shift;
    my $time_t = mktime localtime;
-   $ENV{TZ} = "$tz";
+   $ENV{TZ} = $timezone if defined $timezone;
    return strftime( "%Y-%m-%dT%H:%M:%S", localtime($time_t) );
+}
+
+sub debug {
+   if( !$debug ) {
+       return;
+   }
+   my $timeheader = time_zone();
+   if( @_ + 0 > 1 ) {
+      if( ref(\@_) eq 'ARRAY' ) {
+          print $timeheader . ' [DEBUG] ' . join(" ", @_) . "\n";
+      }
+   } elsif ( @_ + 0 eq 1 ) {
+      my $msg = shift @_;
+      if( ref(\$msg) eq 'ARRAY' ) {
+          print $timeheader . ' [DEBUG] ' . join(" ", @$msg) . "\n";
+      } elsif ( ref(\$msg) eq 'HASH' ) {
+          print $timeheader . ' [DEBUG] ' . join(" ", %$msg) . "\n";
+      } elsif ( ref(\$msg) eq 'SCALAR' ) {
+          print $timeheader . ' [DEBUG] ' . $msg . "\n";
+      } else {
+          return;
+      }
+   }
 }
 
 sub get_mysql_stats {
    my $sanitized_host = str_replace($host);
    my $cache_file     = "$cache_dir/$sanitized_host-mysql_stats.txt" . ( $port != 3306 ? "_$port" : '');
-   if( $debug ) {
-      print "cache file is $cache_file\n";
-   }
+   debug("cache file is $cache_file");
 
    # first, check the cache.
    my $fp;
@@ -142,9 +163,7 @@ sub get_mysql_stats {
        };
        if( $@ ) {
            undef $fp;
-           if( $debug ) {
-               print "open file $cache_file: $@";
-           }
+           debug("open file $cache_file: $@");
        } else {
            my $locked = flock($fp, 1); # LOCK_SH
            if( $locked ) {
@@ -153,18 +172,18 @@ sub get_mysql_stats {
                my @arr = <FH>;
                close FH;
                if( $f_size > 0 && $f_mtime + ($polltime/2) > time && @arr) {
-                   print "Using the cache file.\n" if $debug;
+                   debug("Using the cache file.");
                    close $fp;
                    return $arr[0];
                } else {
-                   print "The cache file seems too small or stale\n" if $debug;
+                   debug("The cache file seems too small or stale");
                    if( flock($fp, 2) ) {  # LOCK_EX
                        my ($f_size,$f_mtime) = (stat("$cache_file"))[7,9];
                        open FH, '<', $cache_file;
                        my @arr = <FH>;
                        close FH;
                        if ( $f_size > 0 && $f_mtime + ($polltime/2) > time && @arr ) {
-                           print "Using the cache file.\n" if $debug;
+                           debug("Using the cache file.");
                            close $fp;
                            return $arr[0];
                        }
@@ -173,15 +192,15 @@ sub get_mysql_stats {
                 }
              } else {
                  undef $fp;
-                 print "Couldn't lock the cache file, ignoring it.\n" if $debug;
+                 debug("Couldn't lock the cache file, ignoring it.");
              }
        }
    } else {
-       print "Caching is disabled.\n" if $debug;
+       debug("Caching is disabled.");
    }
 
    # connect to MySQL
-   print "connect to $host, $port, $user, xxxxxxxx ...\n" if $debug;
+   debug("connect to $host, $port, $user, xxxxxxxx ...");
    my $dbpre = MySQL::dbh->new(
        host => $host,
        port => $port,
@@ -271,7 +290,7 @@ sub get_mysql_stats {
        }
 
        if( $slave_status_rows_gotten == 0 ) {
-           print "Got nothing from SHOW SLAVE STATUS.\n" if $debug;
+           debug("Got nothing from SHOW SLAVE STATUS.");
        }
    }
 
@@ -335,7 +354,7 @@ sub get_mysql_stats {
            && $status{'have_response_time_distribution'} eq 'YES' 
            || exists $status{'query_response_time_stats'}
            && $status{'query_response_time_stats'} eq 'ON' ) {
-           print "Getting query time histogram.\n" if $debug;
+           debug("Getting query time histogram.");
            my $i = 0;
            my $sql_response = "SELECT `count`, ROUND(total * 1000000) AS total " 
                             . "FROM INFORMATION_SCHEMA.QUERY_RESPONSE_TIME "
@@ -359,7 +378,7 @@ sub get_mysql_stats {
                $status{$total_key} = 0;
            }
        } else {
-           print "Not getting time histogram because it is not enabled.\n" if $debug;
+           debug("Not getting time histogram because it is not enabled.");
        }
 
         # Override values from InnoDB parsing with values from SHOW STATUS,
@@ -388,7 +407,7 @@ sub get_mysql_stats {
         # If the SHOW STATUS value exists, override...
         foreach my $key (keys %overrides) {
             if( exists $status{$key} ) {
-               print "Override $key.\n" if $debug;
+               debug("Override $key.");
                my $key_val = $overrides{$key};
                $istatus_vals->{$key_val} = $status{$key};
             }
@@ -413,7 +432,7 @@ sub get_mysql_stats {
         # TODO: I'm not sure what the deal is here; need to debug this.  But the
         # unflushed log bytes spikes a lot sometimes and it's impossible for it to
         # be more than the log buffer.
-        print "Unflushed log: " . $status{'unflushed_log'} . "\n" if $debug;
+        debug("Unflushed log: " . $status{'unflushed_log'});
         $status{'unflushed_log'} = max ($status{'unflushed_log'}, $status{'innodb_log_buffer_size'});
     }
 
@@ -971,8 +990,8 @@ sub get_innodb_status {
 
 sub make_bigint {
     my ($hi, $lo) = @_;
-    printf("bigint - hi: %s, lo: %s\n", $hi, $lo || 0) if $debug ;
     if( defined $lo ) {
+        debug("bigint - hi: $hi, lo: $lo\n");
         $hi = $hi ? $hi : 0;
         $lo = $lo ? $lo : 0;
         return  $hi * 4294967296 + $lo;
