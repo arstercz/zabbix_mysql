@@ -18,13 +18,11 @@ ZABBIX_DIR="/etc/zabbix/zabbix_agentd.d"
    exit 1
 }
 
+HOST=$1
 [[ ! -n $HOST ]] && {
    echo "no ip address."
    exit 1
 }
-
-HOST=$1
-
 
 cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/
 echo "1) # cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/"
@@ -35,7 +33,14 @@ echo
 sed -i "s/10.0.0.10/$HOST/g" /usr/local/zabbix_mysql/get_mysql_stats_wrapper.sh
 echo "3) # sed -i \"s/10.0.0.10/$HOST/g\" /usr/local/zabbix_mysql/get_mysql_stats_wrapper.sh"
 echo
-mkdir /usr/local/zabbix_mysql/tmp && chown zabbix.zabbix /usr/local/zabbix_mysql/tmp
-echo "4) mkdir /usr/local/zabbix_mysql/tmp && chown zabbix.zabbix /usr/local/zabbix_mysql/tmp"
-echo 
+chmod +s /bin/netstat
+echo "4) # chmod +s /bin/netstat"
+echo
 echo "install ok, restart zabbix_agent service manually."
+echo 
+echo "Following command executed:"
+echo "# chmod +s /bin/netstat "
+echo "to avoid the error:"
+echo "(Not all processes could be identified, non-owned process info"
+echo " will not be shown, you would have to be root to see it all.)"
+echo
