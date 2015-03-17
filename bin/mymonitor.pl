@@ -152,7 +152,7 @@ sub debug {
 
 sub get_mysql_stats {
    my $sanitized_host = str_replace($host);
-   my $cache_file     = "$cache_dir/$sanitized_host-mysql_stats.txt" . ( $port != 3306 ? "_$port" : '');
+   my $cache_file     = "$cache_dir/$sanitized_host-mysql_stats.txt" . "_$port";
    debug("cache file is $cache_file");
 
    # first, check the cache.

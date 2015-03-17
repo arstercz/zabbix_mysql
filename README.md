@@ -33,7 +33,7 @@ Configure Zabbix Server
 
 ## FAQ
 
-* The following privileges are needed by monior user. the user and passport in get_mysql_stats_wrapper.sh and mymonitor.pl can be changed, but without following privileges:
+* The following privileges are needed by monior user. the user and password in get_mysql_stats_wrapper.sh and mymonitor.pl can be changed, but without following privileges:
 
     PROCESS, SUPER, REPLICATION SLAVE
 
