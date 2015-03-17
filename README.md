@@ -23,11 +23,9 @@ Configure MySQL connectivity on Agent
 
     1. # git clone https://github.com/chenzhe07/zabbix_mysql.git /usr/local/zabbix_mysql 
     
-    2. # chmod +x /usr/local/zabbix_mysql/*.{sh,pl}
-    
-    3. # cp /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf /etc/zabbix/zabbix_agentd.d/
-    
-    4. edit get_mysql_stats_wrapper.sh in line 7, specify the HOST to your ip address.
+    2. # bash /usr/local/zabbix_mysql/install.sh 192.168.1.2
+
+* note: 192.168.1.2 is your ip address.
 
 Configure Zabbix Server
     

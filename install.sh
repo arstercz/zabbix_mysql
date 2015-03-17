@@ -18,6 +18,11 @@ ZABBIX_DIR="/etc/zabbix/zabbix_agentd.d"
    exit 1
 }
 
+[[ ! -n $HOST ]] && {
+   echo "no ip address."
+   exit 1
+}
+
 HOST=$1
 
 
