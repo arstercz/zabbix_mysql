@@ -43,16 +43,16 @@ Configure Zabbix Server
 
 ## Test
 
-    # perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items hv
+    # perl  mymonitor.pl --host 10.0.0.10 --port 3300 --items hv
     hv:36968
-    # perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items kx
+    # perl  mymonitor.pl --host 10.0.0.10 --port 3300 --items kx
     kx:1070879944
 
-    # php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items hv
+    # php ss_get_mysql_stats.php --host 10.0.0.10 --port 3300 --items hv
     hv:36968
-    # php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items kx kx:1070911408
+    # php ss_get_mysql_stats.php --host 10.0.0.10 --port 3300 --items kx kx:1070911408
 
-    # zabbix_get -s 10.0.0.1 -p 10050 -k "MySQL.Bytes-received[3306]"
+    # zabbix_get -s 10.0.0.10 -p 10050 -k "MySQL.Bytes-received[3300]"
     472339244134
 
 

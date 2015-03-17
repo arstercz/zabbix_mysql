@@ -27,7 +27,7 @@ HOST=$1
 cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/
 echo "1) # cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/"
 echo
-chmod +x /usr/local/zabbix_mysql/*.{sh,pl}
+chmod +x /usr/local/zabbix_mysql/bin/*.{sh,pl}
 echo "2) # chmod +x /usr/local/zabbix_mysql/*.{sh,pl}"
 echo
 sed -i "s/10.0.0.10/$HOST/g" /usr/local/zabbix_mysql/get_mysql_stats_wrapper.sh
