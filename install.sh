@@ -35,4 +35,7 @@ echo
 sed -i "s/10.0.0.10/$HOST/g" /usr/local/zabbix_mysql/get_mysql_stats_wrapper.sh
 echo "3) # sed -i \"s/10.0.0.10/$HOST/g\" /usr/local/zabbix_mysql/get_mysql_stats_wrapper.sh"
 echo
-echo "install ok, restart zabbix_agent manually."
+mkdir /usr/local/zabbix_mysql/tmp && chown zabbix.zabbix /usr/local/zabbix_mysql/tmp
+echo "4) mkdir /usr/local/zabbix_mysql/tmp && chown zabbix.zabbix /usr/local/zabbix_mysql/tmp"
+echo 
+echo "install ok, restart zabbix_agent service manually."
