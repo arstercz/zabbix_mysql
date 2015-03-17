@@ -6,7 +6,7 @@ PORT=$1
 ITEM=$2
 HOST='10.0.0.10'
 DIR='/usr/local/zabbix_mysql'
-CMD="/usr/bin/perl $DIR/mymonitor.pl --host $HOST --port $PORT --items $ITEM"
+CMD="/usr/bin/perl $DIR/bin/mymonitor.pl --host $HOST --port $PORT --items $ITEM"
 CACHEFILE="/tmp/$HOST-mysql_stats.txt_$PORT"
 if [ "$ITEM" = "running-slave" ]; then
     # Check for running slave
