@@ -7,29 +7,41 @@
 ## Note
    Instead of ss_get_mysql_stats.php with mymonitor.pl, the other configuration is similar with ss_get_mysql_stats.php.
 
-   Read more: perldoc mymonitor.pl
+    Read more: perldoc mymonitor.pl
+
+    mysql_port.pl: MySQL port discovery for multiport of MySQL, and generate json format strings.
+
+    get_mysql_stats_wrapper.sh: a wrapper for parse MySQL status, runs every 5min.
 
 ## Require
-  perl-DBI
+    perl-DBI
+    perl-DBD-mysql
 
-  perl-DBD-mysql
+## Install
+
+    1. # git clone https://github.com/chenzhe07/zabbix_mysql.git /usr/local/zabbix_mysql 
+    
+    2. # chmod +x /usr/local/zabbix_mysql/*.{sh,pl}
+    
+    3. # cp /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf /etc/zabbix/zabbix_agentd.d/
+    
+    4. edit get_mysql_stats_wrapper.sh in line 7, specify the HOST to your ip address.
+    
+    5. import templates/zabbix_mysql_multiport.xml using Zabbix UI(Configuration -> Templates -> Import), and Create/edit hosts by assigning them “MySQL” group and linking the template “MySQL_zabbix” (Templates tab).
+
 
 ## Test
 
-\# perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items hv
+    # perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items hv
+    hv:36968
+    # perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items kx
+    kx:1070879944
 
-hv:36968
+    # php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items hv
+    hv:36968
+    # php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items kx kx:1070911408
 
-\# perl  mymonitor.pl --host 172.30.0.2 --port 3300 --items kx
+    # zabbix_get -s 10.0.0.1 -p 10050 -k "MySQL.Bytes-received[3306]"
+    472339244134
 
-kx:1070879944
 
-xxxxxxxxxxxxxxxx
-
-\# php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items hv
-
-hv:36968
-
-\# php ss_get_mysql_stats.php --host 172.30.0.2 --port 3300 --items kx
-
-kx:1070911408

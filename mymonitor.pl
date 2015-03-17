@@ -30,7 +30,7 @@ use Getopt::Long;
 my $host     = 'localhost';
 my $port     = 3306;
 my $user     = 'monitor';
-my $password;
+my $password = 'monitor';
 my @items;
 my $ssl      = 0;
 my $debug    = 0;

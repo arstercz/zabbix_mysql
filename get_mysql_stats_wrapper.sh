@@ -1,5 +1,5 @@
 #!/bin/sh
-# The wrapper for mymonito script.
+# The wrapper for mymonitor script.
 # It runs the script every 5 min. and parses the cache file on each following run.
 
 PORT=$1
