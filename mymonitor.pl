@@ -277,6 +277,7 @@ sub get_mysql_stats {
 
        foreach my $info (keys %$result) {
            $slave_status_rows_gotten++;
+           last if $slave_status_rows_gotten == 0;
            $status{'relay_log_space'} = $result->{'relay_log_space'};
            $status{'slave_lag'}       = $result->{'seconds_behind_master'};
            
