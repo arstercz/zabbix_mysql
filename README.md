@@ -33,6 +33,15 @@ Configure Zabbix Server
     
     1. import templates/zabbix_mysql_multiport.xml using Zabbix UI(Configuration -> Templates -> Import), and Create/edit hosts by assigning them “MySQL” group and linking the template “MySQL_zabbix” (Templates tab).
 
+## FAQ
+
+* The following privileges are needed by monior user.
+
+    PROCESS, SUPER, REPLICATION SLAVE
+
+* As zabbix process running by zabbix user, netstat must run with following command:
+
+    chmod +s /bin/netstat
 
 ## Test
 
