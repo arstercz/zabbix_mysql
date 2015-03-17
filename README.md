@@ -19,6 +19,8 @@
 
 ## Install
 
+Configure MySQL connectivity on Agent
+
     1. # git clone https://github.com/chenzhe07/zabbix_mysql.git /usr/local/zabbix_mysql 
     
     2. # chmod +x /usr/local/zabbix_mysql/*.{sh,pl}
@@ -26,8 +28,10 @@
     3. # cp /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf /etc/zabbix/zabbix_agentd.d/
     
     4. edit get_mysql_stats_wrapper.sh in line 7, specify the HOST to your ip address.
+
+Configure Zabbix Server
     
-    5. import templates/zabbix_mysql_multiport.xml using Zabbix UI(Configuration -> Templates -> Import), and Create/edit hosts by assigning them “MySQL” group and linking the template “MySQL_zabbix” (Templates tab).
+    1. import templates/zabbix_mysql_multiport.xml using Zabbix UI(Configuration -> Templates -> Import), and Create/edit hosts by assigning them “MySQL” group and linking the template “MySQL_zabbix” (Templates tab).
 
 
 ## Test
