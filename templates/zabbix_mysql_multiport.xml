@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2015-03-17T07:23:48Z</date>
+    <date>2015-03-18T02:20:46Z</date>
     <groups>
         <group>
             <name>MySQL</name>
@@ -7309,20 +7309,20 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{MySQL_zabbix:MySQL.Threads-running[{#MYSQLPORT}].last(0)}&gt;500</expression>
-                            <name>MySQL active threads more than 40 on {HOST.NAME}:{#MYSQLPORT}</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>3</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
                             <expression>{MySQL_zabbix:MySQL.Threads-running[{#MYSQLPORT}].last(0)}&gt;1000</expression>
                             <name>MySQL active threads more than 100 on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{MySQL_zabbix:MySQL.Threads-running[{#MYSQLPORT}].last(0)}&gt;500</expression>
+                            <name>MySQL active threads more than 500 on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
                             <description/>
                             <type>0</type>
                         </trigger_prototype>
@@ -8893,18 +8893,6 @@
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>5</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2175D9</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>MySQL_zabbix</host>
-                                        <key>MySQL.Com-load[{#MYSQLPORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
                                     <sortorder>6</sortorder>
                                     <drawtype>0</drawtype>
                                     <color>55009D</color>
@@ -8913,7 +8901,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>MySQL_zabbix</host>
-                                        <key>MySQL.Com-delete-multi[{#MYSQLPORT}]</key>
+                                        <key>MySQL.Com-load[{#MYSQLPORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -8925,13 +8913,25 @@
                                     <type>0</type>
                                     <item>
                                         <host>MySQL_zabbix</host>
-                                        <key>MySQL.Com-insert-select[{#MYSQLPORT}]</key>
+                                        <key>MySQL.Com-delete-multi[{#MYSQLPORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>8</sortorder>
                                     <drawtype>0</drawtype>
                                     <color>AAABA1</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>MySQL_zabbix</host>
+                                        <key>MySQL.Com-insert-select[{#MYSQLPORT}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>10</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00B99B</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -8953,9 +8953,9 @@
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>10</sortorder>
+                                    <sortorder>5</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>00B99B</color>
+                                    <color>2175D9</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -9273,9 +9273,9 @@
                             <ymax_item_1>0</ymax_item_1>
                             <graph_items>
                                 <graph_item>
-                                    <sortorder>0</sortorder>
+                                    <sortorder>1</sortorder>
                                     <drawtype>1</drawtype>
-                                    <color>4B2744</color>
+                                    <color>E4C576</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -9285,9 +9285,9 @@
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>1</sortorder>
+                                    <sortorder>0</sortorder>
                                     <drawtype>1</drawtype>
-                                    <color>E4C576</color>
+                                    <color>4B2744</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -10453,18 +10453,6 @@
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>3</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>4444FF</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>MySQL_zabbix</host>
-                                        <key>MySQL.Threads-connected[{#MYSQLPORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
                                     <sortorder>4</sortorder>
                                     <drawtype>0</drawtype>
                                     <color>F39034</color>
@@ -10474,6 +10462,18 @@
                                     <item>
                                         <host>MySQL_zabbix</host>
                                         <key>MySQL.Threads-cached[{#MYSQLPORT}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>4444FF</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>MySQL_zabbix</host>
+                                        <key>MySQL.Threads-created[{#MYSQLPORT}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
