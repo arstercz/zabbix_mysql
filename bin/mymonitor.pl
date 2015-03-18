@@ -297,10 +297,10 @@ sub get_mysql_stats {
 
    # Get SHOW MASTER STATUS, and add it to the $status hash.
    if( $check_options{'master'} && exists $status{'log_bin'}
-       && $status{'log_bin' eq 'ON'}
+       && $status{'log_bin'} eq 'ON'
       ) {
        my @binlogs;
-       $result = $dbh->selectall_array("SHOW MASTER LOGS");
+       $result = $dbh->selectall_arrayref("SHOW MASTER LOGS");
        foreach my $info (@$result) {
           my($b_name, $b_size) = @$info;
           push @binlogs, $b_size;
