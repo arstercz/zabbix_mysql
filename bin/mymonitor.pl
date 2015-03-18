@@ -300,7 +300,7 @@ sub get_mysql_stats {
        && $status{'log_bin' eq 'ON'}
       ) {
        my @binlogs;
-       $result = $dbh->selectall_array("SHOW MASTER STATUS");
+       $result = $dbh->selectall_array("SHOW MASTER LOGS");
        foreach my $info (@$result) {
           my($b_name, $b_size) = @$info;
           push @binlogs, $b_size;
