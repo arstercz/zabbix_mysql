@@ -278,20 +278,21 @@ sub get_mysql_stats {
 
        foreach my $info (keys %$result) {
            $slave_status_rows_gotten++;
+           last if $slave_status_rows_gotten == 0;
+           $status{'relay_log_space'} = $result->{'relay_log_space'};
+           $status{'slave_lag'}       = $result->{'seconds_behind_master'};
+           
+           # Scale slave_running and slave_stopped relative to the slave lag.
+           $status{'slave_running'} = $result->{'slave_sql_running'} eq 'Yes'
+                                    ? $status{'slave_lag'}
+                                    : 0;
+           $status{'slave_stopped'} = $result->{'slave_sql_running'} eq 'Yes'
+                                    ? 0
+                                    : $status{'slave_lag'};
+           $status{'running_slave'} = $result->{'slave_sql_running'} eq 'Yes' && $result->{'slave_io_running'} eq 'Yes'
+                                    ? 1
+                                    : 0;
        }
-       $status{'relay_log_space'} = $result->{'relay_log_space'};
-       $status{'slave_lag'}       = $result->{'seconds_behind_master'};
-       
-       # Scale slave_running and slave_stopped relative to the slave lag.
-       $status{'slave_running'} = $result->{'slave_sql_running'} eq 'Yes'
-                                ? $status{'slave_lag'}
-                                : 0;
-       $status{'slave_stopped'} = $result->{'slave_sql_running'} eq 'Yes'
-                                ? 0
-                                : $status{'slave_lag'};
-       $status{'running_slave'} = $result->{'slave_sql_running'} eq 'Yes' && $result->{'slave_io_running'} eq 'Yes'
-                                ? 1
-                                : 0;
        if( $slave_status_rows_gotten == 0 ) {
            debug("Got nothing from SHOW SLAVE STATUS.");
        }
