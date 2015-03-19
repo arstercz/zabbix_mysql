@@ -78,6 +78,7 @@ if ( $help ) {
 
 if ( -e '/home/mysql/.my.cnf' ) {
    ($user, $password) = read_cnf('/home/mysql/.my.cnf');
+   debug("overwrite user and password options.")
 }
 
 if ( !$password ) {
@@ -277,19 +278,20 @@ sub get_mysql_stats {
 
        foreach my $info (keys %$result) {
            $slave_status_rows_gotten++;
-           last if $slave_status_rows_gotten == 0;
-           $status{'relay_log_space'} = $result->{'relay_log_space'};
-           $status{'slave_lag'}       = $result->{'seconds_behind_master'};
-           
-           # Scale slave_running and slave_stopped relative to the slave lag.
-           $status{'slave_running'} = $result->{'slave_sql_running'} eq 'YES'
-                                    ? $status{'slave_lag'}
-                                    : 0;
-           $status{'slave_stopped'} = $result->{'slave_sql_running'} eq 'YES'
-                                    ? 0
-                                    : $status{'slave_lag'};
        }
-
+       $status{'relay_log_space'} = $result->{'relay_log_space'};
+       $status{'slave_lag'}       = $result->{'seconds_behind_master'};
+       
+       # Scale slave_running and slave_stopped relative to the slave lag.
+       $status{'slave_running'} = $result->{'slave_sql_running'} eq 'Yes'
+                                ? $status{'slave_lag'}
+                                : 0;
+       $status{'slave_stopped'} = $result->{'slave_sql_running'} eq 'Yes'
+                                ? 0
+                                : $status{'slave_lag'};
+       $status{'running_slave'} = $result->{'slave_sql_running'} eq 'Yes' && $result->{'slave_io_running'} eq 'Yes'
+                                ? 1
+                                : 0;
        if( $slave_status_rows_gotten == 0 ) {
            debug("Got nothing from SHOW SLAVE STATUS.");
        }
@@ -505,6 +507,7 @@ sub get_mysql_stats {
        'Connections'                 =>  'iz',
        'slave_running'               =>  'jg',
        'slave_stopped'               =>  'jh',
+       'running_slave'               =>  'rs',
        'Slave_retried_transactions'  =>  'ji',
        'slave_lag'                   =>  'jj',
        'Slave_open_temp_tables'      =>  'jk',
