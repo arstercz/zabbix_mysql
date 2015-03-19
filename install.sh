@@ -37,7 +37,7 @@ setenforce 0
 echo "4) # setenforce 0"
 echo
 chmod +s /bin/netstat
-echo "4) # chmod +s /bin/netstat"
+echo "5) # chmod +s /bin/netstat"
 echo
 echo "Following command executed:"
 echo "# chmod +s /bin/netstat "
