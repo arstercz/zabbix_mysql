@@ -4,7 +4,7 @@
 
 PORT=$1
 ITEM=$2
-HOST='10.3.254.110'
+HOST='10.0.0.10'
 DIR='/usr/local/zabbix_mysql'
 CMD="/usr/bin/perl $DIR/bin/mymonitor.pl --host $HOST --port $PORT --items $ITEM"
 CACHEFILE="/tmp/$HOST-mysql_stats.txt_$PORT"
