@@ -33,11 +33,8 @@ echo
 sed -i "s/10.0.0.10/$HOST/g" /usr/local/zabbix_mysql/bin/get_mysql_stats_wrapper.sh
 echo "3) # sed -i \"s/10.0.0.10/$HOST/g\" /usr/local/zabbix_mysql/bin/get_mysql_stats_wrapper.sh"
 echo
-setenforce 0
-echo "4) # setenforce 0"
-echo
 chmod +s /bin/netstat
-echo "5) # chmod +s /bin/netstat"
+echo "4) # chmod +s /bin/netstat"
 echo
 echo "Following command executed:"
 echo "# chmod +s /bin/netstat "
@@ -45,5 +42,11 @@ echo "to avoid the error:"
 echo "(Not all processes could be identified, non-owned process info"
 echo " will not be shown, you would have to be root to see it all.)"
 echo
+SEL=`sestatus | grep 'SELinux status' | awk  '{print $3}'`
+if [ "$SEL" = "enabled" ]; then
+    setenforce 0
+    echo "5) # setenforce 0"
+    echo
+fi
 echo "install ok, restart zabbix_agent service manually."
 echo 
