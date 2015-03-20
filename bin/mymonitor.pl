@@ -760,7 +760,7 @@ sub get_innodb_status {
     my $prev_line;
     foreach my $line ( split(/\n/, $text)) {
         $line =~ s/^\s+|\s+$//g;
-        my @row = map { if(/^(\d+)/) { $_ = $1 } else { $_ = $_} } split(/\s+/, $line); # trim non-number character.
+        my @row = map { if(/^(\d+)[,;:)]/) { $_ = $1 } else { $_ = $_} } split(/\s+/, $line); # trim non-number character.
 
         # SEMAPHORES
         # Mutex spin waits 79626940, rounds 157459864, OS waits 698719
@@ -996,6 +996,7 @@ sub get_innodb_status {
 
 sub make_bigint {
     my ($hi, $lo) = @_;
+    no warnings 'portable';
     if( defined $lo ) {
         debug("bigint - hi: $hi, lo: $lo\n");
         $hi = $hi ? $hi : 0;
