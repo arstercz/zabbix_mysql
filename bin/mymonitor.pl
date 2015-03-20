@@ -295,6 +295,7 @@ sub get_mysql_stats {
        }
        if( $slave_status_rows_gotten == 0 ) {
            debug("Got nothing from SHOW SLAVE STATUS.");
+           $status{'running_slave'} = 1;
        }
    }
 
