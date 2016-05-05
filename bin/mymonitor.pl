@@ -312,7 +312,7 @@ sub get_mysql_stats {
        }
 
        if( @binlogs + 0 > 0 ) {
-           $status{'binary_log_space'} = sum @binlogs;
+           $status{'binary_log_space'} = tonum(sum @binlogs);
        }
    }
 
@@ -766,26 +766,26 @@ sub get_innodb_status {
         # SEMAPHORES
         # Mutex spin waits 79626940, rounds 157459864, OS waits 698719
         if( index($line, 'Mutex spin waits') == 0 ) {
-            push @{$results{'spin_waits'}}, $row[3];
-            push @{$results{'spin_rounds'}}, $row[5];
-            push @{$results{'os_waits'}}, $row[8];
+            push @{$results{'spin_waits'}}, tonum($row[3]);
+            push @{$results{'spin_rounds'}}, tonum($row[5]);
+            push @{$results{'os_waits'}}, tonum($row[8]);
         } elsif ( index($line, 'RW-shared spins') == 0 && index($line, ';') > 0 ) {
             # RW-shared spins 3859028, OS waits 2100750; RW-excl spins 4641946, OS waits 1530310
-            push @{$results{'spin_waits'}}, $row[2];
-            push @{$results{'spin_waits'}}, $row[8];
-            push @{$results{'os_waits'}}, $row[5];
-            push @{$results{'os_waits'}}, $row[11];
+            push @{$results{'spin_waits'}}, tonum($row[2]);
+            push @{$results{'spin_waits'}}, tonum($row[8]);
+            push @{$results{'os_waits'}}, tonum($row[5]);
+            push @{$results{'os_waits'}}, tonum($row[11]);
         } elsif ( index($line, 'RW-shared spins') == 0 && index($line, '; RW-excl spins') < 0 ) {
             # RW-shared spins 604733, rounds 8107431, OS waits 241268
-            push @{$results{'spin_waits'}}, $row[2];
-            push @{$results{'os_waits'}}, $row[7];
+            push @{$results{'spin_waits'}}, tonum($row[2]);
+            push @{$results{'os_waits'}}, tonum($row[7]);
         } elsif ( index($line, 'RW-excl spins') == 0 ) {
-            push @{$results{'spin_waits'}}, $row[2];
-            push @{$results{'os_waits'}}, $row[7];
+            push @{$results{'spin_waits'}}, tonum($row[2]);
+            push @{$results{'os_waits'}}, tonum($row[7]);
         } elsif ( index($line, 'seconds the semaphore:') > 0 ) {
             # --Thread 907205 has waited at handler/ha_innodb.cc line 7156 for 1.00 seconds the semaphore:
             $results{'innodb_sem_waits'} += 1;
-            $results{'innodb_sem_wait_time_ms'} += $row[9] * 1000;
+            $results{'innodb_sem_wait_time_ms'} += tonum($row[9] * 1000);
         }
         # TRANSACTIONS
         elsif ( index($line, 'Trx id counter') == 0 ) {
@@ -802,7 +802,7 @@ sub get_innodb_status {
             $results{'unpurged_txns'} = $results{'innodb_transactions'} - $purged_to;
         } elsif ( index($line, 'History list length') == 0 ) {
             # History list length 132
-            $results{'history_list'} = $row[3];
+            $results{'history_list'} = tonum($row[3]);
         } elsif ( $txn_seen && index($line, '---TRANSACTION') == 0 ) {
             # ---TRANSACTION 0, not started, process no 13510, OS thread id 1170446656
             $results{'current_transaction'} += 1;
@@ -811,44 +811,44 @@ sub get_innodb_status {
             }
         } elsif ( $txn_seen && index($line, '------- TRX HAS BEEN') == 0 ) {
             # ------- TRX HAS BEEN WAITING 32 SEC FOR THIS LOCK TO BE GRANTED:
-            $results{'innodb_lock_wait_secs'} += $row[5];
+            $results{'innodb_lock_wait_secs'} += tonum($row[5]);
         } elsif ( index($line, 'read views open inside InnoDB') > 0 ) {
             # 1 read views open inside InnoDB
-            $results{'read_views'} = $row[0];
+            $results{'read_views'} = tonum($row[0]);
         } elsif ( index($line, 'mysql tables in use') == 0 ) {
             # mysql tables in use 2, locked 2
-            $results{'innodb_tables_in_use'} += $row[4];
-            $results{'innodb_locked_tables'} += $row[6];
+            $results{'innodb_tables_in_use'} += tonum($row[4]);
+            $results{'innodb_locked_tables'} += tonum($row[6]);
         } elsif ( $txn_seen && index($line, 'lock struct(s)') > 0 ) {
             # 23 lock struct(s), heap size 3024, undo log entries 27
             # LOCK WAIT 12 lock struct(s), heap size 3024, undo log entries 5
             # LOCK WAIT 2 lock struct(s), heap size 368
             if ( index($line, 'LOCK WAIT') == 0 ) {
-                $results{'innodb_lock_structs'} += $row[2];
+                $results{'innodb_lock_structs'} += tonum($row[2]);
                 $results{'locked_transactions'} += 1;
             } else {
-                $results{'innodb_lock_structs'} += $row[0];
+                $results{'innodb_lock_structs'} += tonum($row[0]);
             }
         }
         # FILE I/O
         elsif ( index($line, ' OS file reads, ') > 0 ) {
             # 8782182 OS file reads, 15635445 OS file writes, 947800 OS fsyncs
-            $results{'file_reads'}  = $row[0];
-            $results{'file_writes'} = $row[4];
-            $results{'file_fsyncs'} = $row[8];
+            $results{'file_reads'}  = tonum($row[0]);
+            $results{'file_writes'} = tonum($row[4]);
+            $results{'file_fsyncs'} = tonum($row[8]);
         } elsif ( index($line, 'Pending normal aio reads:') == 0 ) {
             # Pending normal aio reads: 0, aio writes: 0,
-            $results{'pending_normal_aio_reads'}  = $row[4];
-            $results{'pending_normal_aio_writes'} = $row[7];
+            $results{'pending_normal_aio_reads'}  = tonum($row[4]);
+            $results{'pending_normal_aio_writes'} = tonum($row[7]);
         } elsif ( index($line, 'ibuf aio reads') == 0 ) {
             #  ibuf aio reads: 0, log i/o's: 0, sync i/o's: 0
-            $results{'pending_ibuf_aio_reads'}   = $row[3];
-            $results{'pending_aio_log_ios'}      = $row[6];
-            $results{'pending_aio_sync_flushes'} = $row[9];
+            $results{'pending_ibuf_aio_reads'}   = tonum($row[3]);
+            $results{'pending_aio_log_ios'}      = tonum($row[6]);
+            $results{'pending_aio_sync_flushes'} = tonum($row[9]);
         } elsif ( index($line, 'Pending flushes (fsync)') == 0 ) {
             # Pending flushes (fsync) log: 0; buffer pool: 0
-            $results{'pending_log_flushes'}      = $row[4];
-            $results{'pending_buf_pool_flushes'} = $row[7];
+            $results{'pending_log_flushes'}      = tonum($row[4]);
+            $results{'pending_buf_pool_flushes'} = tonum($row[7]);
         }
         # INSERT BUFFER AND ADAPTIVE HASH INDEX
         elsif ( index($line, 'Ibuf for space 0: size ') == 0 ) {
@@ -856,109 +856,109 @@ sub get_innodb_status {
             # had two lines in the output.  Newer has just one line, see below.
             # Ibuf for space 0: size 1, free list len 887, seg size 889, is not empty
             # Ibuf for space 0: size 1, free list len 887, seg size 889,
-            $results{'ibuf_used_cells'} = $row[5];
-            $results{'ibuf_free_cells'} = $row[9];
-            $results{'ibuf_cell_count'} = $row[12];
+            $results{'ibuf_used_cells'} = tonum($row[5]);
+            $results{'ibuf_free_cells'} = tonum($row[9]);
+            $results{'ibuf_cell_count'} = tonum($row[12]);
         } elsif ( index($line, 'Ibuf: size ') == 0 ) {
             # Ibuf: size 1, free list len 4634, seg size 4636,
-            $results{'ibuf_used_cells'} = $row[2];
-            $results{'ibuf_free_cells'} = $row[6];
-            $results{'ibuf_cell_count'} = $row[9];
+            $results{'ibuf_used_cells'} = tonum($row[2]);
+            $results{'ibuf_free_cells'} = tonum($row[6]);
+            $results{'ibuf_cell_count'} = tonum($row[9]);
             if( index($line, 'merges') >= 0 ) {
-                $results{'ibuf_merges'} = $row[10];
+                $results{'ibuf_merges'} = tonum($row[10]);
             }
         } elsif ( index($line, ', delete mark ') > 0 && index($prev_line, 'merged operations:') == 0 ) {
             # Output of show engine innodb status has changed in 5.5
             # merged operations:
             # insert 593983, delete mark 387006, delete 73092
-            $results{'ibuf_inserts'} = $row[1];
-            $results{'ibuf_merged'}  = $row[1] + $row[4] + $row[6];
+            $results{'ibuf_inserts'} = tonum($row[1]);
+            $results{'ibuf_merged'}  = tonum($row[1]) + tonum($row[4]) + tonum($row[6]);
         } elsif ( index($line, ' merged recs, ') > 0 ) {
             # 19817685 inserts, 19817684 merged recs, 3552620 merges
-            $results{'ibuf_inserts'} = $row[0];
-            $results{'ibuf_merged'}  = $row[2];
-            $results{'ibuf_merges'}  = $row[5];
+            $results{'ibuf_inserts'} = tonum($row[0]);
+            $results{'ibuf_merged'}  = tonum($row[2]);
+            $results{'ibuf_merges'}  = tonum($row[5]);
         } elsif ( index($line, 'Hash table size ') == 0 ) {
             # In some versions of InnoDB, the used cells is omitted.
             # Hash table size 4425293, used cells 4229064, ....
             # Hash table size 57374437, node heap has 72964 buffer(s) <-- no used cells
-            $results{'hash_index_cells_total'} = $row[3];
-            $results{'hash_index_cells_used'}  = index($line, 'used cells') > 0 ? $row[6] : 0;
+            $results{'hash_index_cells_total'} = tonum($row[3]);
+            $results{'hash_index_cells_used'}  = index($line, 'used cells') > 0 ? tonum($row[6]) : 0;
         }
         # LOG
         elsif ( index($line, " log i/o's done, ") > 0 ) {
             # 3430041 log i/o's done, 17.44 log i/o's/second
             # 520835887 log i/o's done, 17.28 log i/o's/second, 518724686 syncs, 2980893 checkpoints
             # TODO: graph syncs and checkpoints
-            $results{'log_writes'} = $row[0];
+            $results{'log_writes'} = tonum($row[0]);
         } elsif ( index($line, ' pending log writes, ') > 0 ) {
             # 0 pending log writes, 0 pending chkp writes
-            $results{'pending_log_writes'}  = $row[0];
-            $results{'pending_chkp_writes'} = $row[4];
+            $results{'pending_log_writes'}  = tonum($row[0]);
+            $results{'pending_chkp_writes'} = tonum($row[4]);
         } elsif ( index($line, 'Log sequence number') == 0 ) {
             # This number is NOT printed in hex in InnoDB plugin.
             # Log sequence number 13093949495856 //plugin
             # Log sequence number 125 3934414864 //normal
             $results{'log_bytes_written'} = defined $row[4]
                                           ? make_bigint($row[3], $row[4])
-                                          : $row[3];
+                                          : tonum($row[3]);
         } elsif ( index($line, 'Log flushed up to') == 0 ) {
             # This number is NOT printed in hex in InnoDB plugin.
             # Log flushed up to   13093948219327
             # Log flushed up to   125 3934414864
             $results{'log_bytes_flushed'} = defined $row[5]
                                           ? make_bigint($row[4], $row[5])
-                                          : $row[4];
+                                          : tonum($row[4]);
         } elsif ( index($line, 'Last checkpoint at') == 0 ) {
             # Last checkpoint at  125 3934293461
             $results{'last_checkpoint'} = defined $row[4]
                                         ? make_bigint($row[3], $row[4])
-                                        : $row[3];
+                                        : tonum($row[3]);
         }
         # BUFFER POOL AND MEMORY
         elsif ( index($line, 'Total memory allocated') == 0 && index($line, 'in additional pool allocated') > 0 ) {
            # Total memory allocated 29642194944; in additional pool allocated 0
            # Total memory allocated by read views 96
-           $results{'total_mem_alloc'}       = $row[3];
-           $results{'additional_pool_alloc'} = $row[8];
+           $results{'total_mem_alloc'}       = tonum($row[3]);
+           $results{'additional_pool_alloc'} = tonum($row[8]);
         } elsif ( index($line, 'Adaptive hash index ') == 0 ) {
            #  Adaptive hash index 1538240664 	(186998824 + 1351241840)
-           $results{'adaptive_hash_memory'} = $row[3];
+           $results{'adaptive_hash_memory'} = tonum($row[3]);
         } elsif ( index($line, 'Page hash           ') == 0 ) {
            #  Page hash           11688584
-           $results{'page_hash_memory'} = $row[2];
+           $results{'page_hash_memory'} = tonum($row[2]);
         } elsif ( index($line, 'Dictionary cache    ') == 0 ) {
            #  Dictionary cache    145525560 	(140250984 + 5274576)
-           $results{'dictionary_cache_memory'} = $row[2];
+           $results{'dictionary_cache_memory'} = tonum($row[2]);
         } elsif ( index($line, 'File system         ') == 0 ) {
            #  File system         313848 	(82672 + 231176)
-           $results{'file_system_memory'} = $row[2];
+           $results{'file_system_memory'} = tonum($row[2]);
         } elsif ( index($line, 'Lock system         ') == 0 ) {
            #  Lock system         29232616 	(29219368 + 13248)
-           $results{'lock_system_memory'} = $row[2];
+           $results{'lock_system_memory'} = tonum($row[2]);
         } elsif ( index($line, 'Recovery system     ') == 0 ) {
            #  Recovery system     0 	(0 + 0)
-           $results{'recovery_system_memory'} = $row[2];
+           $results{'recovery_system_memory'} = tonum($row[2]);
         } elsif ( index($line, 'Threads             ') == 0 ) {
            #  Threads             409336 	(406936 + 2400)
-           $results{'thread_hash_memory'} = $row[1];
+           $results{'thread_hash_memory'} = tonum($row[1]);
         } elsif ( index($line, 'innodb_io_pattern   ') == 0 ) {
            #  innodb_io_pattern   0 	(0 + 0)
-           $results{'innodb_io_pattern_memory'} = $row[1];
+           $results{'innodb_io_pattern_memory'} = tonum($row[1]);
         } elsif ( index($line, 'Buffer pool size ') == 0 ) {
            # The " " after size is necessary to avoid matching the wrong line:
            # Buffer pool size        1769471
            # Buffer pool size, bytes 28991012864
-           $results{'pool_size'} = $row[3];
+           $results{'pool_size'} = tonum($row[3]);
         } elsif ( index($line, 'Free buffers') == 0 ) {
            # Free buffers            0
-           $results{'free_pages'} = $row[2];
+           $results{'free_pages'} = tonum($row[2]);
         } elsif ( index($line, 'Database pages') == 0 ) {
            # Database pages          1696503
-           $results{'database_pages'} = $row[2];
+           $results{'database_pages'} = tonum($row[2]);
         } elsif ( index($line, 'Modified db pages') == 0 ) {
            # Modified db pages       160602
-           $results{'modified_pages'} = $row[3];
+           $results{'modified_pages'} = tonum($row[3]);
         } elsif ( index($line, 'Pages read ahead') == 0 ) {
            # Must do this BEFORE the next test, otherwise it'll get fooled by this
            # line from the new plugin (see samples/innodb-015.txt):
@@ -966,27 +966,27 @@ sub get_innodb_status {
            # TODO: No-op for now, see issue 134.
         } elsif ( index($line, 'Pages read') == 0 ) {
            # Pages read 15240822, created 1770238, written 21705836
-           $results{'pages_read'}    = $row[2];
-           $results{'pages_created'} = $row[4];
-           $results{'pages_written'} = $row[6];
+           $results{'pages_read'}    = tonum($row[2]);
+           $results{'pages_created'} = tonum($row[4]);
+           $results{'pages_written'} = tonum($row[6]);
         }
         # ROW OPERATIONS
         elsif ( index($line, 'Number of rows inserted') == 0 ) {
            # Number of rows inserted 50678311, updated 66425915, deleted 20605903, read 454561562
-           $results{'rows_inserted'} = $row[4];
-           $results{'rows_updated'}  = $row[6];
-           $results{'rows_deleted'}  = $row[8];
-           $results{'rows_read'}     = $row[10];
+           $results{'rows_inserted'} = tonum($row[4]);
+           $results{'rows_updated'}  = tonum($row[6]);
+           $results{'rows_deleted'}  = tonum($row[8]);
+           $results{'rows_read'}     = tonum($row[10]);
         } elsif( index($line, ' queries inside InnoDB, ') > 0 ) {
            # 0 queries inside InnoDB, 0 queries in queue
-           $results{'queries_inside'} = $row[0];
-           $results{'queries_queued'} = $row[4];
+           $results{'queries_inside'} = tonum($row[0]);
+           $results{'queries_queued'} = tonum($row[4]);
         }
         $prev_line = $line;
     }
 
     foreach ( 'spin_waits', 'spin_rounds', 'os_waits' ) {
-        $results{$_} = sum @{$results{$_}};
+        $results{$_} = tonum(sum @{$results{$_}});
     }
 
     $results{'unflushed_log'}        = $results{'log_bytes_written'} - $results{'log_bytes_flushed'};
@@ -995,6 +995,16 @@ sub get_innodb_status {
     return \%results;
 }
 
+# takes only numbers from a string
+sub tonum {
+    my $str = shift;
+    return 0 if !$str;
+    return new Math::BigInt $1 if $str =~ m/(\d+)/;
+    return 0;
+}
+
+# return a 64 bit number from either an hex encoding or
+# a hi lo representation
 sub make_bigint {
     my ($hi, $lo) = @_;
     no warnings 'portable';
