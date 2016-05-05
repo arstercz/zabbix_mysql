@@ -31,7 +31,7 @@ Configure Zabbix Server
     
     1. import templates/zabbix_mysql_multiport.xml using Zabbix UI(Configuration -> Templates -> Import), and Create/edit hosts by assigning them “MySQL” group and linking the template “MySQL_zabbix” (Templates tab).
 
-## FAQ
+## Note
 
 * The following privileges are needed by monior user. the user and password in get_mysql_stats_wrapper.sh and mymonitor.pl can be changed, but without following privileges:
 
@@ -42,7 +42,7 @@ Configure Zabbix Server
     chmod +s /bin/netstat
 
 ## Test
-
+```
     # perl  mymonitor.pl --host 10.0.0.10 --port 3300 --items hv
     hv:36968
     # perl  mymonitor.pl --host 10.0.0.10 --port 3300 --items kx
@@ -50,9 +50,9 @@ Configure Zabbix Server
 
     # php ss_get_mysql_stats.php --host 10.0.0.10 --port 3300 --items hv
     hv:36968
-    # php ss_get_mysql_stats.php --host 10.0.0.10 --port 3300 --items kx kx:1070911408
+    # php ss_get_mysql_stats.php --host 10.0.0.10 --port 3300 --items kx 
+    kx:1070911408
 
     # zabbix_get -s 10.0.0.10 -p 10050 -k "MySQL.Bytes-received[3300]"
     472339244134
-
-
+```
