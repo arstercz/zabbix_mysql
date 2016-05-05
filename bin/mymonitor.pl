@@ -26,6 +26,7 @@ use Data::Dumper;
 use POSIX qw(mktime ctime strftime);
 use List::Util qw(sum max);
 use Getopt::Long;
+use Math::BigInt;
 
 my $host     = 'localhost';
 my $port     = 3306;
@@ -997,15 +998,14 @@ sub get_innodb_status {
 sub make_bigint {
     my ($hi, $lo) = @_;
     no warnings 'portable';
-    if( defined $lo ) {
-        debug("bigint - hi: $hi, lo: $lo\n");
-        $hi = $hi ? $hi : 0;
-        $lo = $lo ? $lo : 0;
-        return  $hi * 4294967296 + $lo;
-    } else {
-        # Assume it is a hex string representation
-        return hex($hi);
+    unless ($lo) {
+        $hi = new Math::BigInt '0x' . $hi;
+        return $hi;
     }
+
+    $hi = new Math::BigInt $hi;
+    $lo = new Math::BigInt $lo;
+    return $lo->badd($hi->blsft(32));
 }
 
 =pod
