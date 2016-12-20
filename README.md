@@ -1,5 +1,5 @@
 # zabbix_mysql
-  Yet another mysql monitor for zabbix, like percona monitor for zabbix.
+  Yet another mysql monitor for zabbix, like percona monitor for zabbix. only test in zabbix 2.2.
 
 ## read more:
    http://www.percona.com/doc/percona-monitoring-plugins/1.1/zabbix/index.html
