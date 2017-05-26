@@ -93,6 +93,16 @@ unless ( @items > 0 ) {
     usage($0);
 } else {
     @items     = split(/,|\ /,join(',',@items));
+
+    if (@items + 0 == 1 && 
+         grep /\Q$items[0]\E/, 
+              qw('idle_blocker_duration' 'waiter_count' 'max_duration')) {
+
+        my $result = get_mysql_stats($items[0]);
+        print $result;
+        exit 0;
+    }
+
     my $result = get_mysql_stats();
 
     my @output;
@@ -153,6 +163,7 @@ sub debug {
 }
 
 sub get_mysql_stats {
+   my $items = shift;
    my $sanitized_host = str_replace($host);
    my $cache_file     = "$cache_dir/$sanitized_host-mysql_stats.txt" . "_$port";
    debug("cache file is $cache_file");
@@ -682,6 +693,19 @@ sub get_mysql_stats {
        }
        close $fp;
     }
+
+    if (defined($items) &&
+          grep /\Q$items\E/,
+            qw(idle_blocker_duration waiter_count max_duration)) {
+        my %innodb_status_check = (
+            'idle_blocker_duration' => idle_blocker_duration($dbh),
+            'waiter_count'          => waiter_count($dbh),
+            'max_duration'          => max_duration($dbh),
+        );
+  
+        $result = "$items:" . $innodb_status_check{$items};
+    }
+
     return $result;
 }
 
@@ -1016,6 +1040,169 @@ sub make_bigint {
     $hi = new Math::BigInt $hi;
     $lo = new Math::BigInt $lo;
     return $lo->badd($hi->blsft(32));
+}
+
+sub idle_blocker_duration {
+    my $dbh = shift;
+    my $block_sql =<<"SQL_END";
+SELECT CONCAT('time: ', MAX(COALESCE(p.time, 0)), ', ', 'thread_id: ', p.id, 
+    , ', ', 'user: ', CONCAT(p.user, '\@', p.host)) AS item
+FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS AS w
+INNER JOIN INFORMATION_SCHEMA.INNODB_TRX AS b ON b.trx_id = w.blocking_trx_id
+INNER JOIN INFORMATION_SCHEMA.INNODB_TRX AS r ON r.trx_id = w.requesting_trx_id
+LEFT  JOIN INFORMATION_SCHEMA.PROCESSLIST AS p ON p.id = b.trx_mysql_thread_id AND p.command = 'Sleep'
+GROUP BY p.id, p.user, p.host
+ORDER BY idle_in_trx DESC LIMIT 1
+SQL_END
+
+    my $sth;
+    my $output = 0;
+    eval{
+        $sth = $dbh->selectrow_hashref("$block_sql");
+    };
+    if ($@) {
+        if ($@ =~ /Unknown table/i) {
+            #$note = "OK The INFORMATION_SCHEMA.INNODB_% tables don't exist.";
+            $output = 0;
+        }
+    }
+    else {
+        if (defined($sth->{item})) {
+            my ($t) = ($sth->{item} =~ /time: (\d+)/);
+            if ($t > 200) {
+                $output = "longest blocking idle transaction sleeps: "
+                        . $sth->{item};
+            }
+        }
+    }
+    return $output;
+}
+
+sub waiter_count {
+    my $dbh = shift;
+    my $waiter_sql =<<"SQL_END";
+SELECT COUNT(DISTINCT REQUESTING_TRX_ID) AS cnt
+FROM   INFORMATION_SCHEMA.INNODB_LOCK_WAITS AS w
+SQL_END
+
+    my $sth;
+    my $output = 0;
+    eval{
+        $sth = $dbh->selectrow_hashref("$waiter_sql");
+    };
+    if ($@) {
+        if ($@ =~ /Unknown table/i) {
+            $output = get_waiter_count($dbh,
+                        "SHOW /*!50000 ENGINE*/ INNODB STATUS"
+                      );
+        }
+    } elsif (defined($sth->{cnt})) {
+        if ($sth->{cnt} > 10) {
+            $output =  $sth->{cnt};
+        }
+    }
+    if ($output > 10) {
+        $output = $output . " transactions in LOCK WAIT status";
+    }
+    else {
+        $output = 0;
+    }
+    return $output;
+}
+
+sub max_duration {
+    my $dbh = shift;
+    my $duration_sql =<<"SQL_END";
+SELECT CONCAT('max time: ', UNIX_TIMESTAMP() - UNIX_TIMESTAMP(t.trx_started), ', ',
+       'thread_id: ', p.id, ', ', 'user: ', CONCAT(p.user, '\@', p.host)) AS item
+FROM INFORMATION_SCHEMA.INNODB_TRX AS t
+JOIN INFORMATION_SCHEMA.PROCESSLIST AS p ON p.id = t.trx_mysql_thread_id
+ORDER BY t.trx_started LIMIT 1
+SQL_END
+
+    my $sth;
+    my $output = 0; 
+    eval {
+        $sth = $dbh->selectrow_hashref("$duration_sql");
+    };   
+    if ($@) {
+        if ($@ =~ /Unknown table/i) {
+            $output = get_longest_trx($dbh,
+                        "SHOW /*!50000 ENGINE*/ INNODB STATUS"
+                      );   
+        }    
+    } elsif (defined($sth->{item})) {
+        my ($t) = ($sth->{item} =~ /max time: (\d+)/);
+        if ($t > 100) {
+            $output = "longest transaction active seconds: "
+                    . $sth->{item};
+
+        }
+        else {
+            $output = 0;
+        }
+    }    
+    else {
+        $output = 0; 
+    }    
+    return $output;
+}
+
+sub get_waiter_count {
+    my ($dbh, $sql) = @_;
+    my $sth = $dbh->selectrow_hashref("$sql");
+    my $output = defined($sth->{Status})
+               ? $sth->{Status}
+               : '';
+    my $lock_waits = 0;
+    my @rows = split(/\n/, $output);
+    my $tseen = 0;
+    foreach (@rows) {
+        if(/^TRANSACTIONS$/) {
+            $tseen = 1;
+        }
+        if( $tseen == 1 && /TRX HAS BEEN WAITING/) {
+            $lock_waits += 1;
+        }
+    }
+    return $lock_waits;
+}
+
+sub get_longest_trx {
+    my ($dbh, $sql) = @_;
+    my $sth = $dbh->selectrow_hashref("$sql");
+    my $output = defined($sth->{Status})
+               ? $sth->{Status}
+               : '';
+    my ($maxtime, $thread, $time, $userinfo) = (0, 0, 0, "nobody");
+    my @rows = split(/\n/, $output);
+    my $tseen = 0;
+    foreach (@rows) {
+        if(/^TRANSACTIONS$/) {
+            $tseen = 1;
+        }
+        if( $tseen == 1 && /^---TRANSACTION.*[0-9] sec/ ) {
+            my @r = split(/\s+/, $_);
+            if ($r[1] =~ /,/) {
+                $time = $r[3];
+            }
+            else {
+                $time = $r[4];
+            }
+        }
+
+        if ( $tseen == 1 && /^MySQL\sthread\sid (\d+),
+                             \s+.*query\sid\s\d+
+                             \s(.*?)\s(\w)/mix ) {
+            if ( $time > $maxtime ) {
+                $maxtime = $time;
+                $thread  = $1;
+                $userinfo = "$3\@$2";
+            }
+        }
+    }
+
+    return "max time: $maxtime, thread_id: $thread, user: $userinfo";
 }
 
 =pod

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2016-12-20T09:02:50Z</date>
+    <date>2017-05-26T11:37:19Z</date>
     <groups>
         <group>
             <name>MySQL</name>
@@ -16,7 +16,11 @@
                     <name>MySQL</name>
                 </group>
             </groups>
-            <applications/>
+            <applications>
+                <application>
+                    <name>mysql_zabbix</name>
+                </application>
+            </applications>
             <items/>
             <discovery_rules>
                 <discovery_rule>
@@ -2481,6 +2485,132 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
+                            <name>Innodb_idle_blocker_duration</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>MySQL.idle_blocker_duration[{#MYSQLPORT}]</key>
+                            <delay>30</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>innodb idle blocker duration</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>mysql_zabbix</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Innodb_max_duration {#MYSQLPORT}</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>MySQL.max_duration[{#MYSQLPORT}]</key>
+                            <delay>30</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>innodb max duration</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>mysql_zabbix</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Innodb_waiter_count {#MYSQLPORT}</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>MySQL.waiter_count[{#MYSQLPORT}]</key>
+                            <delay>30</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>innodb waiter count</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>mysql_zabbix</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                        </item_prototype>
+                        <item_prototype>
                             <name>Key Buf Bytes Unflushed {#MYSQLPORT}</name>
                             <type>0</type>
                             <snmp_community/>
@@ -4909,7 +5039,11 @@
                             <port/>
                             <description>MySQL Query Time Total 03</description>
                             <inventory_link>0</inventory_link>
-                            <applications/>
+                            <applications>
+                                <application>
+                                    <name>mysql_zabbix</name>
+                                </application>
+                            </applications>
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
@@ -7383,6 +7517,33 @@
                             <type>0</type>
                         </trigger_prototype>
                         <trigger_prototype>
+                            <expression>{MySQL_zabbix:MySQL.idle_blocker_duration[{#MYSQLPORT}].str(transaction)}=1</expression>
+                            <name>MySQL InnoDB idle blocker duration more than 200s on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>0</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{MySQL_zabbix:MySQL.max_duration[{#MYSQLPORT}].str(transaction)}=1</expression>
+                            <name>MySQL InnoDB max duration more than 100s on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{MySQL_zabbix:MySQL.waiter_count[{#MYSQLPORT}].str(transaction)}=1</expression>
+                            <name>MySQL InnoDB waiter count more than 10 on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
                             <expression>{MySQL_zabbix:proc.num[mysqld].last(0)}=0</expression>
                             <name>MySQL is down on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
@@ -7392,7 +7553,7 @@
                             <type>0</type>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#1)})/({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#2)} +  {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#2)}) &gt; 3.0</expression>
+                            <expression>({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#1)})/({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#2)} +  {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#2)}) &gt; 3.0 &amp; {MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#1)} &gt; 2000</expression>
                             <name>MySQL qps increase 300% than last check on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
                             <status>0</status>
@@ -7401,8 +7562,8 @@
                             <type>0</type>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{MySQL_zabbix:MySQL.slave-lag[{#MYSQLPORT}].last(0)}&gt;1000</expression>
-                            <name>MySQL slave lag more than 300 on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <expression>{MySQL_zabbix:MySQL.slave-lag[{#MYSQLPORT}].last(0)}&gt;1500</expression>
+                            <name>MySQL slave lag more than 1000 on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -7410,8 +7571,8 @@
                             <type>0</type>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{MySQL_zabbix:MySQL.slave-lag[{#MYSQLPORT}].last(0)}&gt;1800</expression>
-                            <name>MySQL slave lag more than 600 on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <expression>{MySQL_zabbix:MySQL.slave-lag[{#MYSQLPORT}].last(0)}&gt;2000</expression>
+                            <name>MySQL slave lag more than 1800 on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>

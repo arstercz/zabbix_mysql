@@ -59,3 +59,13 @@ you can specify the user and password in `get_mysql_stats_wrapper.sh` with `--us
     # zabbix_get -s 10.0.0.10 -p 10050 -k "MySQL.Bytes-received[3300]"
     472339244134
 ```
+
+### changelog
+
+20170526: Add innodb status check, like [percona-monitor](https://www.percona.com/doc/percona-monitoring-plugins/LATEST/nagios/pmp-check-mysql-innodb.html)
+```
+item                       throttle
+max_duration             if > 100s, then trigger an alarm
+waiter_count             if > 10, then trigger an alarm
+idle_blocker_duration    if > 200s, then trigger an alarm
+```
