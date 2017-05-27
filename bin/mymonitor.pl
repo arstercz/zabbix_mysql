@@ -95,7 +95,7 @@ unless ( @items > 0 ) {
     @items     = split(/,|\ /,join(',',@items));
 
     if (@items + 0 == 1 && 
-         grep /\Q$items[0]\E/, 
+         grep /\b$items[0]\b/, 
               qw('idle_blocker_duration' 'waiter_count' 'max_duration')) {
 
         my $result = get_mysql_stats($items[0]);
@@ -695,7 +695,7 @@ sub get_mysql_stats {
     }
 
     if (defined($items) &&
-          grep /\Q$items\E/,
+          grep /\b$items\b/,
             qw(idle_blocker_duration waiter_count max_duration)) {
         my %innodb_status_check = (
             'idle_blocker_duration' => idle_blocker_duration($dbh),
