@@ -1114,7 +1114,8 @@ sub max_duration {
     my $dbh = shift;
     my $duration_sql =<<"SQL_END";
 SELECT CONCAT('max time: ', UNIX_TIMESTAMP() - UNIX_TIMESTAMP(t.trx_started), ', ',
-       'thread_id: ', p.id, ', ', 'user: ', CONCAT(p.user, '\@', p.host)) AS item
+              'thread_id: ', p.id, ', ', 'user: ', CONCAT(p.user, '\@', p.host), 
+              ', info: ', p.info) AS item
 FROM INFORMATION_SCHEMA.INNODB_TRX AS t
 JOIN INFORMATION_SCHEMA.PROCESSLIST AS p ON p.id = t.trx_mysql_thread_id
 ORDER BY t.trx_started LIMIT 1
