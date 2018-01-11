@@ -18,11 +18,22 @@ ZABBIX_DIR="/etc/zabbix/zabbix_agentd.d"
    exit 1
 }
 
-HOST=$1
-[[ ! -n $HOST ]] && {
-   echo "no ip address."
+interface=$1
+[[ ! -n $interface ]] && {
+   echo "no interface."
    exit 1
 }
+
+HOST=$(ip addr | perl -ne '
+  if($p) { 
+    if(/.+?inet\s+?
+       ((?:\d{1,3}\.){3}\d+?)
+       \/\d+?\s+brd/xsg) {
+      print $1; $p = 0
+    } 
+  }; 
+  $p++ if /em1/
+')
 
 cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/
 echo "1) # cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/"

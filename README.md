@@ -24,9 +24,9 @@ Configure MySQL connectivity on Agent
 ```
 1. # git clone https://github.com/chenzhe07/zabbix_mysql.git /usr/local/zabbix_mysql 
 
-2. # bash /usr/local/zabbix_mysql/install.sh 192.168.1.2
+2. # bash /usr/local/zabbix_mysql/install.sh eth0
 ```
-### note: 192.168.1.2 is your ip address.
+### note: eth0 is your ip address interface.
 
 ## Configure Zabbix Server
     
