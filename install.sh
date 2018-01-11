@@ -18,7 +18,7 @@ ZABBIX_DIR="/etc/zabbix/zabbix_agentd.d"
    exit 1
 }
 
-interface=$1
+export interface=$1
 [[ ! -n $interface ]] && {
    echo "no interface."
    exit 1
@@ -32,7 +32,7 @@ HOST=$(ip addr | perl -ne '
       print $1; $p = 0
     } 
   }; 
-  $p++ if /em1/
+  $p++ if /$ENV{interface}/
 ')
 
 cp -a /usr/local/zabbix_mysql/templates/userparameter_discovery_mysql.conf $ZABBIX_DIR/
