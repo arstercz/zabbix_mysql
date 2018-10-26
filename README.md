@@ -22,7 +22,7 @@ perl-DBD-mysql
 
 Configure MySQL connectivity on Agent
 ```
-1. # git clone https://github.com/chenzhe07/zabbix_mysql.git /usr/local/zabbix_mysql 
+1. # git clone https://github.com/arstercz/zabbix_mysql.git /usr/local/zabbix_mysql 
 
 2. # bash /usr/local/zabbix_mysql/install.sh eth0
 ```
