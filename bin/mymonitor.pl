@@ -1045,7 +1045,7 @@ sub make_bigint {
 sub idle_blocker_duration {
     my $dbh = shift;
     my $block_sql =<<"SQL_END";
-SELECT CONCAT('time: ', MAX(COALESCE(p.time, 0)), ', ', 'thread_id: ', p.id, 
+SELECT MAX(COALESCE(p.time, 0)) as idle_in_trx, CONCAT('time: ', MAX(COALESCE(p.time, 0)), ', ', 'thread_id: ', p.id
     , ', ', 'user: ', CONCAT(p.user, '\@', p.host)) AS item
 FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS AS w
 INNER JOIN INFORMATION_SCHEMA.INNODB_TRX AS b ON b.trx_id = w.blocking_trx_id
