@@ -29,7 +29,8 @@ HOST=$(ip addr | perl -ne '
     if(/.+?inet\s+?
        ((?:\d{1,3}\.){3}\d+?)
        \/\d+?\s+brd/xsg) {
-      print $1; $p = 0
+      print $1; $p = 0;
+      exit 0;
     } 
   }; 
   $p++ if /$ENV{interface}/
