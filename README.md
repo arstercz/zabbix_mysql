@@ -62,7 +62,14 @@ kx:1070911408
 
 ### changelog
 
-20170526: Add innodb status check, like [percona-monitor](https://www.percona.com/doc/percona-monitoring-plugins/LATEST/nagios/pmp-check-mysql-innodb.html)
+
+#### 20190930: Add slave check, also report error message:
+```
+item                        throttle
+slave_check              report last_error if io_thread or sql_thread is No
+```
+
+##### 20170526: Add innodb status check, like [percona-monitor](https://www.percona.com/doc/percona-monitoring-plugins/LATEST/nagios/pmp-check-mysql-innodb.html)
 ```
 item                       throttle
 max_duration             if > 100s, then trigger an alarm
@@ -74,10 +81,4 @@ such as:
 ```
 zabbix_get -s cz-test2 -p 10050 -k "MySQL.max_duration[3301]"
 max_duration:longest transaction active seconds: max time: 18, thread_id: 4838781, user: root@10.0.21.5:59980
-```
-
-20190930: Add slave check, also report error message:
-```
-item                        throttle
-slave_check              report last_error if io_thread or sql_thread is No
 ```
