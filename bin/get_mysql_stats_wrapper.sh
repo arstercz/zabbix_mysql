@@ -11,7 +11,8 @@ CACHEFILE="/tmp/$HOST-mysql_stats.txt_$PORT"
 
 if [ $ITEM == "max_duration" -o \
      $ITEM == "waiter_count" -o \
-     $ITEM == "idle_blocker_duration" ]; then
+     $ITEM == "idle_blocker_duration" \
+     $ITEM == "slave_check" ]; then
    /usr/bin/perl $DIR/bin/mymonitor.pl --host $HOST \
             --port $PORT --items $ITEM --nocache
    exit 0;

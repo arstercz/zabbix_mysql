@@ -63,7 +63,7 @@ kx:1070911408
 ### changelog
 
 
-#### 20190930: Add slave check, also report error message:
+#### 20190730: Add slave check, also report error message:
 ```
 item                        throttle
 slave_check              report last_error if io_thread or sql_thread is No
