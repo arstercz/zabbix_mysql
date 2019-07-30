@@ -96,7 +96,7 @@ unless ( @items > 0 ) {
 
     if (@items + 0 == 1 && 
          grep /\b$items[0]\b/, 
-              qw('idle_blocker_duration' 'waiter_count' 'max_duration')) {
+            qw('idle_blocker_duration' 'waiter_count' 'max_duration' 'slave_check')) {
 
         my $result = get_mysql_stats($items[0]);
         print $result;
@@ -696,11 +696,12 @@ sub get_mysql_stats {
 
     if (defined($items) &&
           grep /\b$items\b/,
-            qw(idle_blocker_duration waiter_count max_duration)) {
+            qw(idle_blocker_duration waiter_count max_duration slave_check)) {
         my %innodb_status_check = (
             'idle_blocker_duration' => idle_blocker_duration($dbh),
             'waiter_count'          => waiter_count($dbh),
             'max_duration'          => max_duration($dbh),
+            'slave_check'           => slave_check($dbh),
         );
   
         $result = "$items:" . $innodb_status_check{$items};
@@ -1146,6 +1147,29 @@ SQL_END
     else {
         $output = 0; 
     }    
+    return $output;
+}
+
+sub slave_check {
+    my $dbh = shift;
+    my $result = $dbh->selectrow_hashref("SHOW SLAVE STATUS");
+    my $slave_status_rows_gotten = 0;
+    my $output;
+
+    # Must lowercase keys because different MySQL versions have different lettercase.
+    $result->{lc $_} = delete $result->{$_} for keys %$result;
+
+    foreach my $info (keys %$result) {
+       $slave_status_rows_gotten++;
+       last if $slave_status_rows_gotten == 0;
+       $output = $result->{'slave_sql_running'} eq 'Yes' && $result->{'slave_io_running'} eq 'Yes'
+               ? 'OK'
+               : 'ERR: ' . $result->{'last_error'};
+    }
+
+    if ($slave_status_rows_gotten == 0) {
+       $output = "OK"; # master is OK.
+    }
     return $output;
 }
 

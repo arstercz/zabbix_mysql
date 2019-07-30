@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2017-05-31T10:22:38Z</date>
+    <date>2019-07-30T07:51:35Z</date>
     <groups>
         <group>
             <name>MySQL</name>
@@ -93,6 +93,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Aborted Connects {#MYSQLPORT}</name>
@@ -135,6 +136,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Active Transactions {#MYSQLPORT}</name>
@@ -177,6 +179,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Adaptive Hash Memory {#MYSQLPORT}</name>
@@ -219,6 +222,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Additional Pool Alloc {#MYSQLPORT}</name>
@@ -261,6 +265,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Binary Log Space {#MYSQLPORT}</name>
@@ -303,6 +308,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Binlog Cache Disk Use {#MYSQLPORT}</name>
@@ -345,6 +351,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Binlog Cache Use {#MYSQLPORT}</name>
@@ -387,6 +394,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Bytes Received {#MYSQLPORT}</name>
@@ -429,6 +437,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Bytes Sent {#MYSQLPORT}</name>
@@ -471,6 +480,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Delete Multi {#MYSQLPORT}</name>
@@ -513,6 +523,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Delete {#MYSQLPORT}</name>
@@ -555,6 +566,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Insert Select {#MYSQLPORT}</name>
@@ -597,6 +609,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Insert {#MYSQLPORT}</name>
@@ -639,6 +652,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Load {#MYSQLPORT}</name>
@@ -681,6 +695,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Replace Select {#MYSQLPORT}</name>
@@ -723,6 +738,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Replace {#MYSQLPORT}</name>
@@ -765,6 +781,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Select {#MYSQLPORT}</name>
@@ -807,6 +824,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Update Multi {#MYSQLPORT}</name>
@@ -849,6 +867,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Com Update {#MYSQLPORT}</name>
@@ -891,6 +910,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Connections {#MYSQLPORT}</name>
@@ -933,6 +953,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Created Tmp Disk Tables {#MYSQLPORT}</name>
@@ -975,6 +996,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Created Tmp Files {#MYSQLPORT}</name>
@@ -1017,6 +1039,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Created Tmp Tables {#MYSQLPORT}</name>
@@ -1059,6 +1082,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Current Transactions {#MYSQLPORT}</name>
@@ -1101,6 +1125,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Database Pages {#MYSQLPORT}</name>
@@ -1143,6 +1168,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Dictionary Cache Memory {#MYSQLPORT}</name>
@@ -1185,6 +1211,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>File Fsyncs {#MYSQLPORT}</name>
@@ -1227,6 +1254,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>File Reads {#MYSQLPORT}</name>
@@ -1269,6 +1297,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>File System Memory {#MYSQLPORT}</name>
@@ -1311,6 +1340,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>File Writes {#MYSQLPORT}</name>
@@ -1353,6 +1383,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Free Pages {#MYSQLPORT}</name>
@@ -1395,6 +1426,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Commit {#MYSQLPORT}</name>
@@ -1437,6 +1469,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Delete {#MYSQLPORT}</name>
@@ -1479,6 +1512,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read First {#MYSQLPORT}</name>
@@ -1521,6 +1555,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read Key {#MYSQLPORT}</name>
@@ -1563,6 +1598,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read Next {#MYSQLPORT}</name>
@@ -1605,6 +1641,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read Prev {#MYSQLPORT}</name>
@@ -1647,6 +1684,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read Rnd Next {#MYSQLPORT}</name>
@@ -1689,6 +1727,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Read Rnd {#MYSQLPORT}</name>
@@ -1731,6 +1770,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Rollback {#MYSQLPORT}</name>
@@ -1773,6 +1813,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Savepoint Rollback {#MYSQLPORT}</name>
@@ -1815,6 +1856,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Savepoint {#MYSQLPORT}</name>
@@ -1857,6 +1899,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Update {#MYSQLPORT}</name>
@@ -1899,6 +1942,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Handler Write {#MYSQLPORT}</name>
@@ -1941,6 +1985,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Hash Index Cells Total {#MYSQLPORT}</name>
@@ -1983,6 +2028,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Hash Index Cells Used {#MYSQLPORT}</name>
@@ -2025,6 +2071,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>History List {#MYSQLPORT}</name>
@@ -2067,6 +2114,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Cell Count {#MYSQLPORT}</name>
@@ -2109,6 +2157,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Free Cells {#MYSQLPORT}</name>
@@ -2151,6 +2200,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Inserts {#MYSQLPORT}</name>
@@ -2193,6 +2243,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Merged {#MYSQLPORT}</name>
@@ -2235,6 +2286,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Merges {#MYSQLPORT}</name>
@@ -2277,6 +2329,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Ibuf Used Cells {#MYSQLPORT}</name>
@@ -2319,6 +2372,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Locked Tables {#MYSQLPORT}</name>
@@ -2361,6 +2415,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Lock Structs {#MYSQLPORT}</name>
@@ -2403,6 +2458,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Lock Wait Secs {#MYSQLPORT}</name>
@@ -2445,6 +2501,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Log Buffer Size {#MYSQLPORT}</name>
@@ -2487,6 +2544,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Row Lock Time {#MYSQLPORT}</name>
@@ -2529,6 +2587,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Row Lock Waits {#MYSQLPORT}</name>
@@ -2571,6 +2630,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Sem Waits {#MYSQLPORT}</name>
@@ -2613,6 +2673,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Sem Wait Time Ms {#MYSQLPORT}</name>
@@ -2655,6 +2716,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Tables In Use {#MYSQLPORT}</name>
@@ -2697,6 +2759,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb Transactions {#MYSQLPORT}</name>
@@ -2739,6 +2802,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb_idle_blocker_duration {#MYSQLPORT}</name>
@@ -2781,6 +2845,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb_max_duration {#MYSQLPORT}</name>
@@ -2823,6 +2888,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Innodb_waiter_count {#MYSQLPORT}</name>
@@ -2865,6 +2931,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Buf Bytes Unflushed {#MYSQLPORT}</name>
@@ -2907,6 +2974,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Buf Bytes Used {#MYSQLPORT}</name>
@@ -2949,6 +3017,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Buffer Size {#MYSQLPORT}</name>
@@ -2991,6 +3060,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Read Requests {#MYSQLPORT}</name>
@@ -3033,6 +3103,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Reads {#MYSQLPORT}</name>
@@ -3075,6 +3146,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Write Requests {#MYSQLPORT}</name>
@@ -3117,6 +3189,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Key Writes {#MYSQLPORT}</name>
@@ -3159,6 +3232,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Locked Transactions {#MYSQLPORT}</name>
@@ -3201,6 +3275,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Lock System Memory {#MYSQLPORT}</name>
@@ -3243,6 +3318,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Log Bytes Flushed {#MYSQLPORT}</name>
@@ -3285,6 +3361,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Log Bytes Written {#MYSQLPORT}</name>
@@ -3327,6 +3404,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Log Writes {#MYSQLPORT}</name>
@@ -3369,6 +3447,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Max Connections {#MYSQLPORT}</name>
@@ -3411,6 +3490,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Max Used Connections {#MYSQLPORT}</name>
@@ -3453,6 +3533,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Modified Pages {#MYSQLPORT}</name>
@@ -3495,6 +3576,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>MySQL running slave {#MYSQLPORT}</name>
@@ -3537,6 +3619,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Opened Tables {#MYSQLPORT}</name>
@@ -3579,6 +3662,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Open Files {#MYSQLPORT}</name>
@@ -3621,6 +3705,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Open Tables {#MYSQLPORT}</name>
@@ -3663,6 +3748,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Os Waits {#MYSQLPORT}</name>
@@ -3705,6 +3791,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Page Hash Memory {#MYSQLPORT}</name>
@@ -3747,6 +3834,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pages Created {#MYSQLPORT}</name>
@@ -3789,6 +3877,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pages Read {#MYSQLPORT}</name>
@@ -3831,6 +3920,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pages Written {#MYSQLPORT}</name>
@@ -3873,6 +3963,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Aio Log Ios {#MYSQLPORT}</name>
@@ -3915,6 +4006,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Aio Sync Ios {#MYSQLPORT}</name>
@@ -3957,6 +4049,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Buf Pool Flushes {#MYSQLPORT}</name>
@@ -3999,6 +4092,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Chkp Writes {#MYSQLPORT}</name>
@@ -4041,6 +4135,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Ibuf Aio Reads {#MYSQLPORT}</name>
@@ -4083,6 +4178,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Log Flushes {#MYSQLPORT}</name>
@@ -4125,6 +4221,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Log Writes {#MYSQLPORT}</name>
@@ -4167,6 +4264,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Normal Aio Reads {#MYSQLPORT}</name>
@@ -4209,6 +4307,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pending Normal Aio Writes {#MYSQLPORT}</name>
@@ -4251,6 +4350,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pool Read Requests {#MYSQLPORT}</name>
@@ -4293,6 +4393,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pool Reads {#MYSQLPORT}</name>
@@ -4335,6 +4436,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Pool Size {#MYSQLPORT}</name>
@@ -4377,6 +4479,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Port status {#MYSQLPORT}</name>
@@ -4419,6 +4522,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Free Blocks {#MYSQLPORT}</name>
@@ -4461,6 +4565,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Free Memory {#MYSQLPORT}</name>
@@ -4503,6 +4608,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Hits {#MYSQLPORT}</name>
@@ -4545,6 +4651,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Inserts {#MYSQLPORT}</name>
@@ -4587,6 +4694,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Lowmem Prunes {#MYSQLPORT}</name>
@@ -4629,6 +4737,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Not Cached {#MYSQLPORT}</name>
@@ -4671,6 +4780,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Queries In Cache {#MYSQLPORT}</name>
@@ -4713,6 +4823,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Qcache Total Blocks {#MYSQLPORT}</name>
@@ -4755,6 +4866,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Cache Size {#MYSQLPORT}</name>
@@ -4797,6 +4909,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 00 {#MYSQLPORT}</name>
@@ -4839,6 +4952,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 01 {#MYSQLPORT}</name>
@@ -4881,6 +4995,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 02 {#MYSQLPORT}</name>
@@ -4923,6 +5038,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 03 {#MYSQLPORT}</name>
@@ -4965,6 +5081,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 04 {#MYSQLPORT}</name>
@@ -5007,6 +5124,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 05 {#MYSQLPORT}</name>
@@ -5049,6 +5167,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 06 {#MYSQLPORT}</name>
@@ -5091,6 +5210,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 07 {#MYSQLPORT}</name>
@@ -5133,6 +5253,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 08 {#MYSQLPORT}</name>
@@ -5175,6 +5296,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 09 {#MYSQLPORT}</name>
@@ -5217,6 +5339,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 10 {#MYSQLPORT}</name>
@@ -5259,6 +5382,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 11 {#MYSQLPORT}</name>
@@ -5301,6 +5425,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 12 {#MYSQLPORT}</name>
@@ -5343,6 +5468,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Count 13 {#MYSQLPORT}</name>
@@ -5385,6 +5511,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 00 {#MYSQLPORT}</name>
@@ -5427,6 +5554,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 01 {#MYSQLPORT}</name>
@@ -5469,6 +5597,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 02 {#MYSQLPORT}</name>
@@ -5511,6 +5640,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 03 {#MYSQLPORT}</name>
@@ -5553,6 +5683,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 04 {#MYSQLPORT}</name>
@@ -5595,6 +5726,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 05 {#MYSQLPORT}</name>
@@ -5637,6 +5769,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 06 {#MYSQLPORT}</name>
@@ -5679,6 +5812,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 07 {#MYSQLPORT}</name>
@@ -5721,6 +5855,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 08 {#MYSQLPORT}</name>
@@ -5763,6 +5898,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 09 {#MYSQLPORT}</name>
@@ -5805,6 +5941,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 10 {#MYSQLPORT}</name>
@@ -5847,6 +5984,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 11 {#MYSQLPORT}</name>
@@ -5889,6 +6027,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 12 {#MYSQLPORT}</name>
@@ -5931,6 +6070,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Query Time Total 13 {#MYSQLPORT}</name>
@@ -5973,6 +6113,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Questions {#MYSQLPORT}</name>
@@ -6015,6 +6156,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Read Views {#MYSQLPORT}</name>
@@ -6057,6 +6199,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Recovery System Memory {#MYSQLPORT}</name>
@@ -6099,6 +6242,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Relay Log Space {#MYSQLPORT}</name>
@@ -6141,6 +6285,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Rows Deleted {#MYSQLPORT}</name>
@@ -6183,6 +6328,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Rows Inserted {#MYSQLPORT}</name>
@@ -6225,6 +6371,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Rows Read {#MYSQLPORT}</name>
@@ -6267,6 +6414,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Rows Updated {#MYSQLPORT}</name>
@@ -6309,6 +6457,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Select Full Join {#MYSQLPORT}</name>
@@ -6351,6 +6500,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Select Full Range Join {#MYSQLPORT}</name>
@@ -6393,6 +6543,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Select Range Check {#MYSQLPORT}</name>
@@ -6435,6 +6586,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Select Range {#MYSQLPORT}</name>
@@ -6477,6 +6629,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Select Scan {#MYSQLPORT}</name>
@@ -6519,6 +6672,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slave Lag {#MYSQLPORT}</name>
@@ -6561,6 +6715,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slave Open Temp Tables {#MYSQLPORT}</name>
@@ -6603,6 +6758,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slave Retried Transactions {#MYSQLPORT}</name>
@@ -6645,6 +6801,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slave Running {#MYSQLPORT}</name>
@@ -6687,6 +6844,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slave Stopped {#MYSQLPORT}</name>
@@ -6729,6 +6887,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Slow Queries {#MYSQLPORT}</name>
@@ -6771,6 +6930,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Sort Merge Passes {#MYSQLPORT}</name>
@@ -6813,6 +6973,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Sort Range {#MYSQLPORT}</name>
@@ -6855,6 +7016,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Sort Rows {#MYSQLPORT}</name>
@@ -6897,6 +7059,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Sort Scan {#MYSQLPORT}</name>
@@ -6939,6 +7102,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Spin Rounds {#MYSQLPORT}</name>
@@ -6981,6 +7145,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Spin Waits {#MYSQLPORT}</name>
@@ -7023,6 +7188,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Closing Tables {#MYSQLPORT}</name>
@@ -7065,6 +7231,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Copying To Tmp Table {#MYSQLPORT}</name>
@@ -7107,6 +7274,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State End {#MYSQLPORT}</name>
@@ -7149,6 +7317,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Freeing Items {#MYSQLPORT}</name>
@@ -7191,6 +7360,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Init {#MYSQLPORT}</name>
@@ -7233,6 +7403,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Locked {#MYSQLPORT}</name>
@@ -7275,6 +7446,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Login {#MYSQLPORT}</name>
@@ -7317,6 +7489,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State None {#MYSQLPORT}</name>
@@ -7359,6 +7532,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Other {#MYSQLPORT}</name>
@@ -7401,6 +7575,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Preparing {#MYSQLPORT}</name>
@@ -7443,6 +7618,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Reading From Net {#MYSQLPORT}</name>
@@ -7485,6 +7661,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Sending Data {#MYSQLPORT}</name>
@@ -7527,6 +7704,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Sorting Result {#MYSQLPORT}</name>
@@ -7569,6 +7747,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Statistics {#MYSQLPORT}</name>
@@ -7611,6 +7790,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Updating {#MYSQLPORT}</name>
@@ -7653,6 +7833,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>State Writing To Net {#MYSQLPORT}</name>
@@ -7695,6 +7876,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Table Cache {#MYSQLPORT}</name>
@@ -7737,6 +7919,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Table Locks Immediate {#MYSQLPORT}</name>
@@ -7779,6 +7962,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Table Locks Waited {#MYSQLPORT}</name>
@@ -7821,6 +8005,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Thread Cache Size {#MYSQLPORT}</name>
@@ -7863,6 +8048,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Thread Hash Memory {#MYSQLPORT}</name>
@@ -7905,6 +8091,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Threads Cached {#MYSQLPORT}</name>
@@ -7947,6 +8134,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Threads Connected {#MYSQLPORT}</name>
@@ -7989,6 +8177,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Threads Created {#MYSQLPORT}</name>
@@ -8031,6 +8220,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Threads Running {#MYSQLPORT}</name>
@@ -8073,6 +8263,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Total Mem Alloc {#MYSQLPORT}</name>
@@ -8115,6 +8306,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Uncheckpointed Bytes {#MYSQLPORT}</name>
@@ -8157,6 +8349,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
                             <name>Unflushed Log {#MYSQLPORT}</name>
@@ -8199,6 +8392,7 @@
                                 </application>
                             </applications>
                             <valuemap/>
+                            <logtimefmt/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
@@ -8269,6 +8463,15 @@
                             <expression>({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#1)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#1)})/({MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#2)} +  {MySQL_zabbix:MySQL.Com-insert[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-insert-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-replace-select[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-update-multi[{#MYSQLPORT}].last(#2)} + {MySQL_zabbix:MySQL.Com-delete-multi[{#MYSQLPORT}].last(#2)}) &gt; 3.0 &amp; {MySQL_zabbix:MySQL.Com-select[{#MYSQLPORT}].last(#1)} &gt; 2000</expression>
                             <name>MySQL qps increase 300% than last check on {HOST.NAME}:{#MYSQLPORT}</name>
                             <url/>
+                            <status>1</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{MySQL_zabbix:MySQL.max_duration[{#MYSQLPORT}].str(ERR:)}=1</expression>
+                            <name>MySQL slave check on {HOST.NAME}:{#MYSQLPORT}</name>
+                            <url/>
                             <status>0</status>
                             <priority>4</priority>
                             <description/>
@@ -8298,15 +8501,6 @@
                             <url/>
                             <status>0</status>
                             <priority>5</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{MySQL_zabbix:MySQL.running-slave[{#MYSQLPORT}].last(0)}=0</expression>
-                            <name>Slave is stopped on {HOST.NAME}:{#MYSQLPORT}</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>4</priority>
                             <description/>
                             <type>0</type>
                         </trigger_prototype>
@@ -9979,7 +10173,7 @@
                                     <drawtype>0</drawtype>
                                     <color>4444FF</color>
                                     <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
+                                    <calc_fnc>4</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>MySQL_zabbix</host>
@@ -11486,7 +11680,7 @@
                 <screen>
                     <name>MySQL zabbix Graphs</name>
                     <hsize>2</hsize>
-                    <vsize>22</vsize>
+                    <vsize>23</vsize>
                     <screen_items/>
                 </screen>
             </screens>
