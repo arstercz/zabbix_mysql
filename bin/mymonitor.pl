@@ -1166,7 +1166,7 @@ sub slave_check {
                ? 'OK'
                : 'ERR: io_thread: ' . $result->{'slave_io_running'}
                                     . ', sql_thread: ' . $result->{'slave_sql_running'}
-                                    . ', last_error' . $result->{'last_error'};
+                                    . ', last_error: ' . $result->{'last_error'};
     }
 
     if ($slave_status_rows_gotten == 0) {
