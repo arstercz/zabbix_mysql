@@ -12,8 +12,7 @@ Usage: mymonitor [OPTION...]
 =head1 RISKS
 
   Monitor user should be have super, process, slave privileges. password stored in plain
-
-text, everyone can change the password method, such as Base64 ... 
+  text, everyone can change the password method, such as Base64 ... 
 
 =cut
 
@@ -31,7 +30,7 @@ use Math::BigInt;
 my $host     = 'localhost';
 my $port     = 3306;
 my $user     = 'monitor';
-my $password = 'monitor';
+my $password = '';
 my @items;
 my $ssl      = 0;
 my $debug    = 0;
